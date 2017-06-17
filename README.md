@@ -14,7 +14,7 @@ This Python program controls a motorized T. rex.
     8 male-to-female jumper wires (You can get by with only 6. I used 2 to extend the wires of the motor),
     battery holder (one that will hold 4 AA batteries),
     
-  Connex Action Dino from Amazing Toys Ltd.
+  Innonex 4D Science T-rex from Amazing Toys Ltd.
   
   AA batteries (4)
 
