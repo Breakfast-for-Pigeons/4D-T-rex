@@ -1,5 +1,5 @@
 # 4D T. rex
-This Python program controls a motorized T. rex.
+Use Python and a Raspberry Pi to control an Innonex 4D T. rex. 
 
 ![4d_t_rex](https://user-images.githubusercontent.com/13591438/27263304-061e23c2-542c-11e7-9e05-475ceb3b18b2.JPG)
 
