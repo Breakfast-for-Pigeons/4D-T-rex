@@ -4,6 +4,8 @@ This Python program controls a motorized T. rex.
 ![4d_t_rex](https://user-images.githubusercontent.com/13591438/27263304-061e23c2-542c-11e7-9e05-475ceb3b18b2.JPG)
 
 ## Requirements:
+  Innonex 4D Science T-rex from Amazing Toys Ltd.
+  
   Raspberry Pi (including power supply, keyboard, mouse, speaker, and monitor).
   
   Electronics:
@@ -13,8 +15,6 @@ This Python program controls a motorized T. rex.
     8 male-to-male jumper wires,
     8 male-to-female jumper wires (You can get by with only 6. I used 2 to extend the wires of the motor),
     battery holder (one that will hold 4 AA batteries),
-    
-  Innonex 4D Science T-rex from Amazing Toys Ltd.
   
   AA batteries (4)
 
