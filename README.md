@@ -1,7 +1,7 @@
 # 4D T. rex
 This Python program controls a motorized T. rex.
 
-![4d_t_rex](https://user-images.githubusercontent.com/13591438/27252707-92c85ef8-532a-11e7-9eee-14738beb6e88.JPG)
+![4d_t_rex](https://user-images.githubusercontent.com/13591438/27263304-061e23c2-542c-11e7-9e05-475ceb3b18b2.JPG)
 
 ## Requirements:
   Raspberry Pi (including power supply, keyboard, mouse, speaker, and monitor).
