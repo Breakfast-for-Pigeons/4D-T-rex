@@ -1,7 +1,7 @@
 # 4D T. rex
 Use Python and a Raspberry Pi to control an Innonex 4D T. rex. 
 
-[![4d_t_rex](https://user-images.githubusercontent.com/13591438/27263304-061e23c2-542c-11e7-9e05-475ceb3b18b2.JPG)](https://www.dropbox.com/s/4z465zu4e93wi4f/4D_T_rex.AVI?dl=0)
+[![Click for 4d_t_rex video](https://user-images.githubusercontent.com/13591438/27263304-061e23c2-542c-11e7-9e05-475ceb3b18b2.JPG)](https://www.dropbox.com/s/4z465zu4e93wi4f/4D_T_rex.AVI?dl=0)
 
 ## Requirements:
   Innonex 4D Science T-rex from Amazing Toys Ltd.
