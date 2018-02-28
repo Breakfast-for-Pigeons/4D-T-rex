@@ -9,12 +9,12 @@ Use Python and a Raspberry Pi to control an Innonex 4D T. rex.
   Raspberry Pi (including power supply, keyboard, mouse, speaker, and monitor).
   
   Electronics:
-    * breadboard
-    * L293D chip
-    * 2 tactile push buttons
-    * 8 male-to-male jumper wires
-    * 8 male-to-female jumper wires (You can get by with only 6. I used 2 to extend the wires of the motor)
-    * battery holder (one that will hold 4 AA batteries)
+   * breadboard
+   * L293D chip
+   * 2 tactile push buttons
+   * 8 male-to-male jumper wires
+   * 8 male-to-female jumper wires (You can get by with only 6. I used 2 to extend the wires of the motor)
+   * battery holder (one that will hold 4 AA batteries)
   
   AA batteries (4)
 
