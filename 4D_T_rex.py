@@ -47,7 +47,7 @@ pygame.mixer.init()
 '''
 The file_check function checks to see if the necessary files exist.
 If they all exist, the program will continue.
-If a file is missing, the program print a message and exit.
+If a file is missing, the program will print a message and exit.
 '''
 def file_check():
 	
