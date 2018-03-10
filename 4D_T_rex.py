@@ -32,7 +32,7 @@ import os, sys
 
 t_rex_motor = Motor(20, 26, True)
 t_rex_motor_enable = OutputDevice(21)
-red_button = Button(2) 
+red_button = Button(9) 
 black_button = Button(19) 
 
 ########################################################################
@@ -353,6 +353,10 @@ def get_roar():
 	else:
 		return roar, roar8_length
 
+def prompt_user_for_input():
+	print("\033[1;37;40mPush the \033[1;30;47mblack button\033[1;37;40m to activate the \033[1;30;47mT. Rex\033[1;37;40m.")
+	print("\033[1;37;40mPush the \033[1;31;40mred button \033[1;37;40mor press Ctrl-C to \033[1;31;40mstop \033[1;37;40mthe program.\n")
+
 '''
 The activate_T_rex funciton takes 2 inputs: roar and roar_length. 
 This function will play the sound file and then activate the motor for 
@@ -403,8 +407,7 @@ def main():
 		# Pre-load the first sound file
 		roar, roar_length = get_roar()
 		# Prompt the user to press a button
-		print("\n\033[1;37;40mPush the \033[1;30;47mblack button\033[1;37;40m to activate the \033[1;30;47mT. Rex\033[1;37;40m.")
-		print("\033[1;37;40mPush the \033[1;31;40mred button \033[1;37;40mor press Ctrl-C to \033[1;31;40mstop \033[1;37;40mthe program.\n")
+		prompt_user_for_input()
 		
 		while True:
 			
@@ -414,9 +417,8 @@ def main():
 				print(random.choice(dino_facts))
 				# Move the T. rex for the duration of the sound file
 				activate_T_rex(roar, roar_length)
-				# Prompt the user again to press a button
-				print("\033[1;37;40mPush the \033[1;30;47mblack button\033[1;37;40m to activate the \033[1;30;47mT. Rex\033[1;37;40m.")
-				print("\033[1;37;40mPush the \033[1;31;40mred button \033[1;37;40mor press Ctrl-C to \033[1;31;40mstop \033[1;37;40mthe program.\n")
+				# Prompt the user to press a button
+				prompt_user_for_input()
 				# Load the next sound file
 				roar, roar_length = get_roar()
 				
