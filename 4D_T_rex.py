@@ -156,9 +156,9 @@ def file_check():
 		exit()
 
 '''
-This function checks to see if the user has permission to read the
-necessary files. If so, the program will continue. If not, messages are
-printed out and the program will exit.
+The access_file_check function checks to see if the user has permission
+to read the necessary files. If so, the program will continue. If not, 
+messages are printed out to the screen and the program will exit.
 '''
 def access_file_check():
 	
@@ -282,7 +282,9 @@ def read_file(file_name):
 	return dino_facts
 	
 '''
-This function checks to see if the file is empty.
+This empty_file_check function checks to see if the file is empty. If it
+is, the program will print a message to the screen. If not, the program
+will continue.
 '''
 def empty_file_check(file_name):		
 	print("\033[1;37;40mIs the dinosaur_facts.txt file empty?...", end="")
@@ -295,7 +297,8 @@ def empty_file_check(file_name):
 		print("\033[1;32;40mNo\033[1;37;40m!")
 		
 '''
-This function will print out the program header to the screen.
+The print_header function will print out the program header to the 
+screen.
 '''
 def print_header():
 	print("\033[1;37;40m==========================================================================================================")
@@ -309,7 +312,7 @@ def print_header():
 
 '''
 The get_roar function will randomly select one of the T. rex roar
-files and return it and its file length to the main function.
+sound files and return it and its file length to the main function.
 '''
 def get_roar():
 	
@@ -353,7 +356,7 @@ def get_roar():
 		return roar, roar8_length
 
 '''
-This function prompts a user to push a button.
+The prompt_user_for_input function prompts a user to push a button.
 '''
 def prompt_user_for_input():
 	print("\033[1;37;40mPush the \033[1;30;47mblack button\033[1;37;40m to activate the \033[1;30;47mT. Rex\033[1;37;40m.")
@@ -378,7 +381,7 @@ def activate_T_rex(roar, roar_length):
 	t_rex_motor_enable.off()          # Stops the motor
 
 '''
-This function realeases the gpio pins.
+The release_gpio_pins function realeases the gpio pins.
 '''
 def release_gpio_pins():
 	t_rex_motor.close()
