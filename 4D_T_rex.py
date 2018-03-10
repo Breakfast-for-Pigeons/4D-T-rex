@@ -353,6 +353,9 @@ def get_roar():
 	else:
 		return roar, roar8_length
 
+'''
+This function prompts a user to push a button.
+'''
 def prompt_user_for_input():
 	print("\033[1;37;40mPush the \033[1;30;47mblack button\033[1;37;40m to activate the \033[1;30;47mT. Rex\033[1;37;40m.")
 	print("\033[1;37;40mPush the \033[1;31;40mred button \033[1;37;40mor press Ctrl-C to \033[1;31;40mstop \033[1;37;40mthe program.\n")
