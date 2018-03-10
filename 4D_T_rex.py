@@ -32,8 +32,8 @@ import os, sys
 
 t_rex_motor = Motor(20, 26, True)
 t_rex_motor_enable = OutputDevice(21)
-red_button = Button(9) 
 black_button = Button(19) 
+red_button = Button(9) 
 
 ########################################################################
 #                           Initialize                                 #
