@@ -262,6 +262,7 @@ def access_file_check():
 		print("\033[1;37;40mExiting program.\n")
 		release_gpio_pins()
 		exit()
+
 '''
 The read_file function will read the dinosaur facts file and each 
 line of the file will be an element in the fun_facts list. It will then
@@ -311,7 +312,6 @@ def print_header():
 The get_roar function will randomly select one of the T. rex roar
 files and return it and its file length to the main function.
 '''
-
 def get_roar():
 	
 	roar1 = "Sounds/T_rex1.mp3"
@@ -365,7 +365,6 @@ The activate_T_rex funciton takes 2 inputs: roar and roar_length.
 This function will play the sound file and then activate the motor for 
 the duration of the sound file. 
 '''
-
 def activate_T_rex(roar, roar_length):
 	try:
 		t_rex_motor.value = 0.6      # Controls the motor speed
@@ -387,12 +386,12 @@ def release_gpio_pins():
 	t_rex_motor_enable.close()
 	red_button.close()
 	black_button.close()
+	
 '''
 This is the main fucntion. It will wait until one of two buttons is 
 pressed. One button will start the program and the other button will
 stop the program. Pressing Ctrl-C will also stop the program.
 '''
-
 def main():
 	try:
 		# Check to see that the necessary files exist
@@ -426,13 +425,13 @@ def main():
 				roar, roar_length = get_roar()
 				
 			if red_button.is_pressed:
-				print("\nExiting program.\n")
+				print("Exiting program.\n")
 				release_gpio_pins()
 				exit()
 				
 	except KeyboardInterrupt:
 		release_gpio_pins()
-		print("\nExiting program.\n")
+		print("Exiting program.\n")
 		
 if __name__ == '__main__':
 	main()
