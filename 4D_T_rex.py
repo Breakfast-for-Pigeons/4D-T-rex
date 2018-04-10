@@ -30,9 +30,9 @@ import os, sys
 #                           Variables                                  #
 ########################################################################
 
-t_rex_motor = Motor(20, 26, True)
-t_rex_motor_enable = OutputDevice(21)
-black_button = Button(19) 
+t_rex_motor = Motor(20, 16, True)
+t_rex_motor_enable = OutputDevice(21) 
+black_button = Button(12)
 red_button = Button(9) 
 
 ########################################################################
@@ -51,15 +51,7 @@ If a file is missing, the program will print a message and exit.
 '''
 def file_check():
 	
-	dinosaur_facts_flag = 0
-	t_rex1_flag = 0
-	t_rex2_flag = 0
-	t_rex3_flag = 0
-	t_rex4_flag = 0
-	t_rex5_flag = 0
-	t_rex6_flag = 0
-	t_rex7_flag = 0
-	t_rex8_flag = 0
+	file_missing_flag = 0
 	
 	print("Checking for necessary files:")
 	# Check to see if dinosaur_facts.txt file exists
@@ -67,91 +59,70 @@ def file_check():
 	if os.path.isfile('Files/dinosaur_facts.txt'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		dinosaur_facts_flag = 1
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the dinosaur_facts.txt file exists in the 'Files' folder.")
+		file_missing_flag = 1
 	# Check to see if T_Rex1.mp3 file exists
 	print("Looking for T_rex1.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex1.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex1_flag = 1	
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex1.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1	
 	# Check to see if T_Rex2.mp3 file exists
 	print("Looking for T_rex2.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex2.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex2_flag = 1
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex2.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1
 	# Check to see if T_Rex3.mp3 file exists
 	print("Looking for T_rex3.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex3.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex3_flag = 1
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex3.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1
 	# Check to see if T_Rex4.mp3 file exists
 	print("Looking for T_rex4.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex4.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex4_flag = 1
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex4.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1
 	# Check to see if T_Rex5.mp3 file exists
 	print("Looking for T_rex5.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex5.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex1_flag = 1	
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex5.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1	
 	# Check to see if T_Rex6.mp3 file exists
 	print("Looking for T_rex6.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex6.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex2_flag = 1
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex6.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1
 	# Check to see if T_Rex7.mp3 file exists
 	print("Looking for T_rex7.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex7.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex3_flag = 1
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex7.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1
 	# Check to see if T_Rex8.mp3 file exists
 	print("Looking for T_rex8.mp3...", end="")
 	if os.path.isfile('Sounds/T_rex8.mp3'):
 		print("\033[1;32;40mfound\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mnot found\033[1;37;40m!")
-		t_rex4_flag = 1
-	
+		print("\033[1;31;40mnot found\033[1;37;40m! Check to make sure that the T_rex8.mp3 file exists in the 'Sounds' folder.")
+		file_missing_flag = 1	
 	
 	# If there are no missing files, return to the main function
 	# Otherwise print out messages and exit the program
-	if dinosaur_facts_flag == 0  and t_rex1_flag == 0 and t_rex2_flag == 0 and t_rex3_flag == 0 and t_rex4_flag == 0 and \
-	   t_rex5_flag == 0 and t_rex6_flag == 0 and t_rex7_flag == 0 and t_rex8_flag == 0:
+	if file_missing_flag == 0:  
 		return
 	else:
-		if dinosaur_facts_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the dinosaur_facts.txt file exists in the 'Files' folder.")
-		if t_rex1_flag == 1: 	
-			print("\033[1;31;40mCheck to make sure that the T_rex1.mp3 file exists in the 'Sounds' folder.")
-		if t_rex2_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the T_rex2.mp3 file exists in the 'Sounds' folder.") 
-		if t_rex3_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the T_rex3.mp3 file exists in the 'Sounds' folder.")
-		if t_rex4_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the T_rex4.mp3 file exists in the 'Sounds' folder.")
-		if t_rex5_flag == 1: 	
-			print("\033[1;31;40mCheck to make sure that the T_rex5.mp3 file exists in the 'Sounds' folder.")
-		if t_rex6_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the T_rex6.mp3 file exists in the 'Sounds' folder.") 
-		if t_rex7_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the T_rex7.mp3 file exists in the 'Sounds' folder.")
-		if t_rex8_flag == 1:
-			print("\033[1;31;40mCheck to make sure that the T_rex8.mp3 file exists in the 'Sounds' folder.")
-		print("\033[1;37;40mExiting program.\n")
 		release_gpio_pins()
 		exit()
 
@@ -162,15 +133,7 @@ messages are printed out to the screen and the program will exit.
 '''
 def access_file_check():
 	
-	dinosaur_facts_flag = 0
-	t_rex1_flag = 0
-	t_rex2_flag = 0
-	t_rex3_flag = 0
-	t_rex4_flag = 0
-	t_rex5_flag = 0
-	t_rex6_flag = 0
-	t_rex7_flag = 0
-	t_rex8_flag = 0
+	access_file_flag = 0
 	
 	print("Checking to see if user has permission to read the necessary files:")
 	# Check to see if user has read access to dinosaur_facts.txt
@@ -178,87 +141,68 @@ def access_file_check():
 	if os.access('Files/dinosaur_facts.txt', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		dinosaur_facts_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Files' folder and the dinosaur_facts.txt file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex1.mp3
 	print("Does user have read permissions for T_rex1.mp3?...", end="")
 	if os.access('Sounds/T_rex1.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex1_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex1.mp3' file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex2.mp3
 	print("Does user have read permissions for T_rex2.mp3?...", end="")
 	if os.access('Sounds/T_rex2.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex2_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex2.mp3' file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex3.mp3
 	print("Does user have read permissions for T_rex3.mp3?...", end="")
 	if os.access('Sounds/T_rex3.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex2_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex3.mp3' file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex4.mp3
 	print("Does user have read permissions for T_rex4.mp3?...", end="")
 	if os.access('Sounds/T_rex4.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex4_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex4.mp3' file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex5.mp3
 	print("Does user have read permissions for T_rex5.mp3?...", end="")
 	if os.access('Sounds/T_rex5.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex5_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex5.mp3' file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex6.mp3
 	print("Does user have read permissions for T_rex6.mp3?...", end="")
 	if os.access('Sounds/T_rex6.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex6_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex6.mp3' file.")
+		access_file_flag = 1
 	# Check to see if user has read access to  T_Rex7.mp3
 	print("Does user have read permissions for T_rex7.mp3?...", end="")
 	if os.access('Sounds/T_rex7.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex7.mp3' file.")
 		t_rex7_flag = 1
 	# Check to see if user has read access to  T_Rex8.mp3
 	print("Does user have read permissions for T_rex8.mp3?...", end="")
 	if os.access('Sounds/T_rex8.mp3', os.R_OK):
 		print("\033[1;32;40mYes\033[1;37;40m!")
 	else:
-		print("\033[1;31;40mNo\033[1;37;40m!")
-		t_rex8_flag = 1
+		print("\033[1;31;40mNo\033[1;37;40m! Make sure that the user has read access to the 'Sounds' folder and the 'T_rex8.mp3' file.")
+		access_file_flag = 1
 	
-	if dinosaur_facts_flag == 0  and t_rex1_flag == 0 and t_rex2_flag == 0 and t_rex3_flag == 0 and t_rex4_flag == 0 and \
-	   t_rex5_flag == 0 and t_rex6_flag == 0 and t_rex7_flag == 0 and t_rex8_flag == 0:
+	if access_file_flag == 0:  
 		return
 	else:
-		if dinosaur_facts_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Files' folder and the dinosaur_facts.txt file.")
-		if t_rex1_flag == 1: 	
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex1.mp3' file.")
-		if t_rex2_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex2.mp3' file.") 
-		if t_rex3_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex3.mp3' file.")
-		if t_rex4_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex4.mp3' file.")
-		if t_rex5_flag == 1: 	
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex5.mp3' file.")
-		if t_rex6_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex6.mp3' file.") 
-		if t_rex7_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex7.mp3' file.")
-		if t_rex8_flag == 1:
-			print("\033[1;31;40mMake sure that the user has read access to the 'Sounds' folder and the 'T_rex8.mp3' file.")
 		print("\033[1;37;40mExiting program.\n")
 		release_gpio_pins()
 		exit()
@@ -434,6 +378,7 @@ def main():
 	except KeyboardInterrupt:
 		release_gpio_pins()
 		print("Exiting program.\n")
+		exit()
 		
 if __name__ == '__main__':
 	main()
