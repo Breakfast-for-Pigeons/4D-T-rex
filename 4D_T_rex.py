@@ -45,6 +45,53 @@ pygame.mixer.init()
 #                            Functions                                 #
 ########################################################################
 '''
+This is the main function. It will wait until one of two buttons is 
+pressed. One button will start the program and the other button will
+stop the program. Pressing Ctrl-C will also stop the program.
+'''
+def main():
+	try:
+		# Check to see that the necessary files exist
+		file_check()
+		# Check to see if files are accessible
+		access_file_check()
+		# Read the dinosaur_facts.txt file to populate the dino_facts list.
+		dino_facts = read_file("Files/dinosaur_facts.txt")
+		# Check to see if the file is empty
+		empty_file_check(dino_facts)
+		# Acknowledge that prelimiary checks are complete
+		print("\033[1;37;40mPrelimiary checks are complete. Starting program...\n")
+		# Display program header
+		print_header()
+		# Pre-load the first sound file
+		roar, roar_length = get_roar()
+		# Prompt the user to press a button
+		prompt_user_for_input()
+		
+		while True:
+			
+			if black_button.is_pressed:
+				# Print out a random dinosaur fun fact
+				print("\033[1;34;40mDINOSAUR FUN FACT:")
+				print(random.choice(dino_facts))
+				# Move the T. rex for the duration of the sound file
+				activate_T_rex(roar, roar_length)
+				# Prompt the user to press a button
+				prompt_user_for_input()
+				# Load the next sound file
+				roar, roar_length = get_roar()
+				
+			if red_button.is_pressed:
+				print("Exiting program.\n")
+				release_gpio_pins()
+				exit()
+				
+	except KeyboardInterrupt:
+		release_gpio_pins()
+		print("Exiting program.\n")
+		exit()
+
+'''
 The file_check function checks to see if the necessary files exist.
 If they all exist, the program will continue.
 If a file is missing, the program will print a message and exit.
@@ -332,53 +379,6 @@ def release_gpio_pins():
 	t_rex_motor_enable.close()
 	red_button.close()
 	black_button.close()
-	
-'''
-This is the main function. It will wait until one of two buttons is 
-pressed. One button will start the program and the other button will
-stop the program. Pressing Ctrl-C will also stop the program.
-'''
-def main():
-	try:
-		# Check to see that the necessary files exist
-		file_check()
-		# Check to see if files are accessible
-		access_file_check()
-		# Read the dinosaur_facts.txt file to populate the dino_facts list.
-		dino_facts = read_file("Files/dinosaur_facts.txt")
-		# Check to see if the file is empty
-		empty_file_check(dino_facts)
-		# Acknowledge that prelimiary checks are complete
-		print("\033[1;37;40mPrelimiary checks are complete. Starting program...\n")
-		# Display program header
-		print_header()
-		# Pre-load the first sound file
-		roar, roar_length = get_roar()
-		# Prompt the user to press a button
-		prompt_user_for_input()
-		
-		while True:
-			
-			if black_button.is_pressed:
-				# Print out a random dinosaur fun fact
-				print("\033[1;34;40mDINOSAUR FUN FACT:")
-				print(random.choice(dino_facts))
-				# Move the T. rex for the duration of the sound file
-				activate_T_rex(roar, roar_length)
-				# Prompt the user to press a button
-				prompt_user_for_input()
-				# Load the next sound file
-				roar, roar_length = get_roar()
-				
-			if red_button.is_pressed:
-				print("Exiting program.\n")
-				release_gpio_pins()
-				exit()
-				
-	except KeyboardInterrupt:
-		release_gpio_pins()
-		print("Exiting program.\n")
-		exit()
 		
 if __name__ == '__main__':
 	main()
