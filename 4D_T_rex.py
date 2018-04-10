@@ -334,7 +334,7 @@ def release_gpio_pins():
 	black_button.close()
 	
 '''
-This is the main fucntion. It will wait until one of two buttons is 
+This is the main function. It will wait until one of two buttons is 
 pressed. One button will start the program and the other button will
 stop the program. Pressing Ctrl-C will also stop the program.
 '''
