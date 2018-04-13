@@ -34,6 +34,6 @@ ____________________________________
 
 3) Type "sudo ./4D_T_rex.py"
 
-![4d_t_rex_program](https://user-images.githubusercontent.com/13591438/27252709-97d69a40-532a-11e7-95e8-a27baaa768c3.png)
+![4d_t_rex_program](https://user-images.githubusercontent.com/13591438/38752374-8ac8c106-3f20-11e8-953e-3f978761c011.png)
 
 
