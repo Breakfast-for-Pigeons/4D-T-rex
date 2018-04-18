@@ -86,7 +86,6 @@ def main():
 				# Prompt the user to press a button
 				prompt_user_for_input()
 				
-				
 			if red_button.is_pressed:
 				stop_the_program()
 				
@@ -102,6 +101,9 @@ def file_check():
 	
 	file_missing_flag = 0
 	
+	sounds = ['T_rex1.ogg', 'T_rex2.ogg', 'T_rex3.ogg', 'T_rex4.ogg',
+			  'T_rex5.ogg', 'T_rex6.ogg', 'T_rex7.ogg', 'T_rex8.ogg']
+	
 	logging.info("FILE CHECK")
 	# Check to see if dinosaur_facts.txt file exists
 	if os.path.isfile('Files/dinosaur_facts.txt'):
@@ -109,61 +111,21 @@ def file_check():
 	else:
 		detail_log.error("dinosaur_facts.txt file was not found! Make sure that the dinosaur_facts.txt file exists in the Files folder.")
 		file_missing_flag = 1
-	# Check to see if T_Rex1.mp3 file exists
-	if os.path.isfile('Sounds/T_rex1.mp3'):
-		logging.info("T_rex1.mp3 file was found!")
-	else:
-		logging.error("T_rex1.mp3 file was not found! Make sure that the T_rex1.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex2.mp3 file exists
-	if os.path.isfile('Sounds/T_rex2.mp3'):
-		logging.info("T_rex2.mp3 file was found!")
-	else:
-		logging.error("T_rex2.mp3 file was not found! Make sure that the T_rex2.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex3.mp3 file exists
-	if os.path.isfile('Sounds/T_rex3.mp3'):
-		logging.info("T_rex3.mp3 file was found!")
-	else:
-		logging.error("T_rex3.mp3 file was not found! Make sure that the T_rex3.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex4.mp3 file exists
-	if os.path.isfile('Sounds/T_rex4.mp3'):
-		logging.info("T_rex4.mp3 file was found!")
-	else:
-		logging.error("T_rex4.mp3 file was not found! Make sure that the T_rex4.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex5.mp3 file exists
-	if os.path.isfile('Sounds/T_rex5.mp3'):
-		logging.info("T_rex5.mp3 file was found!")
-	else:
-		logging.error("T_rex5.mp3 file was not found! Make sure that the T_rex5.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex6.mp3 file exists
-	if os.path.isfile('Sounds/T_rex6.mp3'):
-		logging.info("T_rex6.mp3 file was found!")
-	else:
-		logging.error("T_rex6.mp3 file was not found! Make sure that the T_rex6.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex7.mp3 file exists
-	if os.path.isfile('Sounds/T_rex2.mp3'):
-		logging.info("T_rex7.mp3 file was found!")
-	else:
-		logging.error("T_rex7.mp3 file was not found! Make sure that the T_rex7.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
-	# Check to see if T_Rex8.mp3 file exists
-	if os.path.isfile('Sounds/T_rex8.mp3'):
-		logging.info("T_rex8.mp3 file was found!")
-	else:
-		logging.error("T_rex8.mp3 file was not found! Make sure that the T_rex8.mp3 file exists in the 'Sounds' folder.")
-		file_missing_flag = 1
+	
+	# Check to see if sound files exists
+	for sound in sounds:
+		if os.path.isfile('Sounds/' + sound):
+			logging.info("{} file was found!".format(sound))
+		else:
+			logging.error("{} file was not found! Make sure that the {} file exists in the 'Sounds' folder.".format(sound, sound))
+			file_missing_flag = 1
 	
 	# If there are no missing files, return to the main function
 	# Otherwise print out message and exit the program
 	if file_missing_flag == 0:
 		return
 	else:
-		print("\033[1;31;40mErrors were encountered. Check the log in the 'Files' folder for more details.\033[1;31;40m")
+		print("\033[1;31;40mErrors were encountered. Check the log in the 'Files' folder for more information.")
 		stop_the_program()
 
 '''
@@ -175,6 +137,9 @@ def permission_check():
 	
 	permission_flag = 0
 	
+	sounds = ['T_rex1.ogg', 'T_rex2.ogg', 'T_rex3.ogg', 'T_rex4.ogg',
+			  'T_rex5.ogg', 'T_rex6.ogg', 'T_rex7.ogg', 'T_rex8.ogg']
+	
 	logging.info("PERMISSION CHECK")
 	# Check to see if user has read access to dinosaur_facts.txt
 	if os.access('Files/dinosaur_facts.txt', os.R_OK):
@@ -182,59 +147,19 @@ def permission_check():
 	else:
 		logging.error("User does not have permission to read the dinosaur_facts.txt file.")
 		permission_flag = 1
-	# Check to see if user has read access to  T_Rex1.mp3
-	if os.access('Sounds/T_rex1.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex1.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex1.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex2.mp3
-	if os.access('Sounds/T_rex2.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex2.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex2.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex3.mp3
-	if os.access('Sounds/T_rex3.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex3.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex3.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex4.mp3
-	if os.access('Sounds/T_rex4.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex4.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex4.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex5.mp3
-	if os.access('Sounds/T_rex5.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex5.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex5.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex6.mp3
-	if os.access('Sounds/T_rex6.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex6.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex6.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex7.mp3
-	if os.access('Sounds/T_rex7.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex7.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex7.mp3 file.")
-		permission_flag = 1
-	# Check to see if user has read access to  T_Rex8.mp3
-	if os.access('Sounds/T_rex8.mp3', os.R_OK):
-		logging.info("User has permission to read the T_Rex8.mp3 file.")
-	else:
-		logging.error("User does not have permission to read the T_Rex8.mp3 file.")
-		permission_flag = 1
+		
+	# Check to see if user has read access to sound files
+	for sound in sounds:
+		if os.access('Sounds/' + sound, os.R_OK):
+			logging.info("User has permission to read the {} file.".format(sound))
+		else:
+			logging.error("User does not have permission to read the {} file.".format(sound))
+			permission_flag = 1
 	
 	if permission_flag == 0:
 		return
 	else:
-		print("\033[1;31;40mErrors were encountered. Check the log in the 'Files' folder for more details.\033[1;31;40m")
+		print("\033[1;31;40mErrors were encountered. Check the log in the 'Files' folder for more information.")
 		stop_the_program()
 
 '''
@@ -248,7 +173,7 @@ and the program will exit.
 '''
 def read_file(file_name):
 	logging.info("READING DINOSAUR_FACTS.TXT")
-	with open(file_name, "r") as f:   # open the file as read-only
+	with open(file_name, "r") as f:         # open the file as read-only
 		dino_facts = f.readlines()
 
 	return dino_facts
@@ -262,7 +187,7 @@ def empty_file_check(file_name):
 	logging.info("EMPTY FILE CHECK")
 	if file_name == []:
 		logging.error("The dinosaur.txt file is empty. The program won't work.")
-		print("\033[1;31;40mErrors were encountered. Check the log in the 'Files' folder for more details.\033[1;31;40m")
+		print("\033[1;31;40mErrors were encountered. Check the log in the 'Files' folder for more information.")
 		stop_the_program()
 	else:
 		logging.info("The dinosaur.txt file is not empty.(This is good. We don't want an empty file.)")
@@ -289,44 +214,12 @@ sound files and return it and its file length to the main function.
 '''
 def get_roar():
 	
-	roar1 = "Sounds/T_rex1.mp3"
-	roar2 = "Sounds/T_rex2.mp3"
-	roar3 = "Sounds/T_rex3.mp3"
-	roar4 = "Sounds/T_rex4.mp3"
-	roar5 = "Sounds/T_rex5.mp3"
-	roar6 = "Sounds/T_rex6.mp3"
-	roar7 = "Sounds/T_rex7.mp3"
-	roar8 = "Sounds/T_rex8.mp3"
-
-	roar1_length = 6.5    # lenth of file in seconds
-	roar2_length = 3      # lenth of file in seconds
-	roar3_length = 4      # lenth of file in seconds
-	roar4_length = 5.5    # lenth of file in seconds
-	roar5_length = 4      # lenth of file in seconds
-	roar6_length = 6      # lenth of file in seconds
-	roar7_length = 4.5    # lenth of file in seconds
-	roar8_length = 4      # lenth of file in seconds
+	# The Key : Value pair is sound file name : length of file in seconds
+	roars = {'Sounds/T_rex1.ogg' : 6.5 , 'Sounds/T_rex2.ogg' : 3 , 'Sounds/T_rex3.ogg' : 4 , 
+			 'Sounds/T_rex4.ogg' : 5.5 , 'Sounds/T_rex5.ogg' : 4 , 'Sounds/T_rex6.ogg' : 6 ,
+			 'Sounds/T_rex7.ogg' : 4.5 , 'Sounds/T_rex8.ogg' : 4 }
 	
-	roars = [roar1, roar2, roar3, roar4, roar5, roar6, roar7, roar8]
-	
-	roar = random.choice(roars)   # Selects random sound file
-	
-	if roar == roar1:
-		return roar, roar1_length
-	elif roar == roar2:
-		return roar, roar2_length
-	elif roar == roar3:
-		return roar, roar3_length
-	if roar == roar4:
-		return roar, roar4_length
-	elif roar == roar5:
-		return roar, roar5_length
-	elif roar == roar6:
-		return roar, roar6_length
-	elif roar == roar7:
-		return roar, roar7_length
-	else:
-		return roar, roar8_length
+	return random.choice(list(roars.items()))
 
 '''
 The prompt_user_for_input function prompts a user to push a button.
@@ -353,7 +246,7 @@ def activate_T_rex(roar, roar_length):
 		t_rex_motor.value = 0.6       # Controls the motor speed
 	except ValueError:
 		logging.error("A bad value was specified for t_rex_motor. The value should be between 0 and 1.")
-		print("\033[1;31;40mAn error was encountered. Check the detail log for more information\n")
+		print("\033[1;31;40mAn error was encountered. Check the log in the 'Files' folder for more information.\n")
 		stop_the_program()
 	pygame.mixer.music.load(roar)     # Loads the sound file
 	t_rex_motor_enable.on()           # Starts the motor
