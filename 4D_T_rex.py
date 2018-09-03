@@ -252,7 +252,7 @@ def prompt_user_for_input():
     '''
     The prompt_user_for_input function prompts a user to push a button.
     '''
-    
+
     # First line - print all white text
     print("\033[1;37;40mPush the white button to activate the T. Rex.")
     # Second line
