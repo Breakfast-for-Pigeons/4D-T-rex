@@ -238,7 +238,10 @@ def print_header():
     unreadable. This is much better. The program still compiles and runs
     OK.
     '''
-
+    
+    # The r prefix is to let Pylint know that it is a raw string.
+    # It prevents the Pylint message "Anomolous backslash in string:
+    # string constant might be missing an r prefix"
     print("\n\033[1;37;40m")                        # print white header
     print(r"==========================================================================================================")
     print(r"   _  _   ____    _____                                                                                   ")
