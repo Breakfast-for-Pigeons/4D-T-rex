@@ -12,7 +12,7 @@ Functions:
 - file_check: Checks to see if the necessary files exist
 - permission_check: Checks to see if the user has permission to read
   the necessary files
-- read_file: Reads the dino_facts file
+- create_list: Reads a file, creates a list
 - empty_file_check: Checks to see if the dino_facts list is empty
 - print_header: Prints a header
 - prompt_user_for_input: Prompts user to push a button
@@ -55,10 +55,15 @@ RED_BUTTON = Button(9)
 
 pygame.mixer.init()
 
-logging.basicConfig(filename='Files/t_rex.log', filemode='w',
-                    level=logging.INFO,
-                    format='%(asctime)s %(levelname)s: %(message)s',
-                    datefmt='%m/%d/%y %I:%M:%S %p:')
+# Logging
+LOG = 'Files/t_rex.log'
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter(fmt='%(asctime)s %(levelname)s: %(message)s',
+                              datefmt='%m/%d/%y %I:%M:%S %p:')
+file_handler = logging.FileHandler(LOG, 'w')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 ########################################################################
 #                            Functions                                 #
@@ -73,18 +78,18 @@ def main():
     """
 
     try:
-        logging.info("START")
+        logger.info("START")
         # STEP01: Check to see that the necessary files exist.
         file_check()
         # STEP02: Check to see if files are accessible.
         permission_check()
-        # STEP03: Read the dinosaur_facts.txt file to populate the
+        # STEP03: Check to see if the file is empty
+        empty_file_check()
+        # STEP04: Read the dinosaur_facts.txt file to populate the
         # dino_facts list.
-        dino_facts = read_file("Files/dinosaur_facts.txt")
-        # STEP04: Check to see if the file is empty
-        empty_file_check(dino_facts)
+        dino_facts = create_list("Files/dinosaur_facts.txt")
         # STEP05: Acknowledge that prelimiary checks are complete
-        logging.info("Prelimiary checks are complete. Starting program...")
+        logger.info("Prelimiary checks are complete. Starting program...")
         # STEP06: Display program header
         print_header()
         # STEP07: Pre-load the first sound file
@@ -126,24 +131,24 @@ def file_check():
     sounds = ['T_rex1.ogg', 'T_rex2.ogg', 'T_rex3.ogg', 'T_rex4.ogg',
               'T_rex5.ogg', 'T_rex6.ogg', 'T_rex7.ogg', 'T_rex8.ogg']
 
-    logging.info("FILE CHECK")
+    logger.info("FILE CHECK")
     # Check to see if dinosaur_facts.txt file exists
     if os.path.isfile('Files/dinosaur_facts.txt'):
-        logging.info("dinosaur_facts.txt file was found!")
+        logger.info("dinosaur_facts.txt file was found!")
     else:
-        logging.error("dinosaur_facts.txt file was not found! Make sure " +
-                      "that the dinosaur_facts.txt file exists in the Files " +
-                      "folder.")
+        logger.error("dinosaur_facts.txt file was not found! Make sure " +
+                     "that the dinosaur_facts.txt file exists in the Files " +
+                     "folder.")
         file_missing_flag = 1
 
     # Check to see if sound files exists
     for sound in sounds:
         if os.path.isfile('Sounds/' + sound):
-            logging.info("%s file was found!", sound)
+            logger.info("%s file was found!", sound)
         else:
-            logging.error("%s file was not found! Make sure " +
-                          "that the %s file exists in the " +
-                          "'Sounds' folder.", sound, sound)
+            logger.error("%s file was not found! Make sure " +
+                         "that the %s file exists in the " +
+                         "'Sounds' folder.", sound, sound)
             file_missing_flag = 1
 
     # If there are no missing files, return to the main function
@@ -171,24 +176,24 @@ def permission_check():
     sounds = ['T_rex1.ogg', 'T_rex2.ogg', 'T_rex3.ogg', 'T_rex4.ogg',
               'T_rex5.ogg', 'T_rex6.ogg', 'T_rex7.ogg', 'T_rex8.ogg']
 
-    logging.info("PERMISSION CHECK")
+    logger.info("PERMISSION CHECK")
     # Check to see if user has read access to dinosaur_facts.txt
     if os.access('Files/dinosaur_facts.txt', os.R_OK):
-        logging.info("User has permission to read the dinosaur_facts.txt " +
-                     "file.")
+        logger.info("User has permission to read the dinosaur_facts.txt " +
+                    "file.")
     else:
-        logging.error("User does not have permission to read the " +
-                      "dinosaur_facts.txt file.")
+        logger.error("User does not have permission to read the " +
+                     "dinosaur_facts.txt file.")
         permission_flag = 1
 
     # Check to see if user has read access to sound files
     for sound in sounds:
         if os.access('Sounds/' + sound, os.R_OK):
-            logging.info("User has permission to read the " +
-                         "%s file.", sound)
+            logger.info("User has permission to read the " +
+                        "%s file.", sound)
         else:
-            logging.error("User does not have permission to read the " +
-                          "%s file.", sound)
+            logger.error("User does not have permission to read the " +
+                         "%s file.", sound)
             permission_flag = 1
 
     if permission_flag == 0:
@@ -199,61 +204,61 @@ def permission_check():
         stop_the_program()
 
 
-def read_file(file_name):
+def empty_file_check():
     """
-    Reads the dino_facts file
+    Checks to see if a file is empty
 
-    This function reads the dino_facts file and populates a list. Each
-    line of the file will be an element in the dino_facts list. It will
-    then return the dino_facts list to the main function. If the program
-    is unable to populate the list, it will display an error message and
-    then exit the program.
+    This function will check to see if a file is empty. If it is, the
+    program will print a message to the screen and then exit. If the
+    file is not empty, the program will continue.
+    """
+
+    files = ['dinosaur_facts.txt']
+
+    logger.info("EMPTY FILE CHECK")
+    # Check to see if the files are empty
+    for file_name in files:
+        if os.stat('Files/' + file_name).st_size == 0:
+            logger.error("The %s file is empty.", file_name)
+            print("\033[1;31;40m\nCould not run the program. Check the log " +
+                  "in the 'Files' folder for more information.\n")
+            stop_the_program()
+        else:
+            logger.info("The %s file is not empty." +
+                        "This is good. We don't want an empty file.",
+                        file_name)
+
+
+def create_list(file_name):
+    """
+    Reads a file, creates a list
+
+    This function reads a facts file and use it to create a list. Each
+    line of the file will be an element in the list. It will then return
+    the list to the main function. If the program is unable to populate
+    the list, it will display an error message and then exit the program.
 
     Arguments:
-        file_name: The dinosaur_facts.txt file located in the 'Files'
-        folder.
+        file_name: a facts file
 
     Returns:
-        dino_facts: a list of dinosaur facts
+        created_list: a list of facts
     """
-
-    logging.info("READING DINOSAUR_FACTS.TXT")
+    logger.info("CREATING LIST")
+    logger.info("Reading file: %s", file_name)
     try:
         with open(file_name, "r") as facts:     # open the file as read-only
-            dino_facts = facts.readlines()
-        logging.info("The dino_facts list was successfully populated.")
+            created_list = facts.readlines()
+        logger.info("After reading %s, the list was successfully populated.",
+                    file_name)
     except IOError:
         print("\033[1;31;40mErrors were encountered. Check the log in the " +
               "'Files' folder for more information.")
-        logging.error("The dino_facts list could not be populated.")
+        logger.error("The %s file could not be created" +
+                     " into a list.", file_name)
         stop_the_program()
 
-    return dino_facts
-
-
-def empty_file_check(list_name):
-    """
-    Checks to see if the dino_facts list is empty
-
-    This function will check to see if the list is empty. If it is, the
-    program will print a message to the screen and then exit. If the
-    file is not empty, the program will continue.
-
-    Arguments:
-        list_name: the dino_facts list
-
-    """
-
-    logging.info("EMPTY FILE CHECK")
-    if list_name == []:
-        logging.error("The dinosaur.txt file is empty. The program won't " +
-                      "work.")
-        print("\033[1;31;40mErrors were encountered. Check the log in the " +
-              "'Files' folder for more information.")
-        stop_the_program()
-    else:
-        logging.info("The dinosaur.txt file is not empty.(This is good. "
-                     "We don't want an empty file.)")
+    return created_list
 
 
 def print_header():
@@ -353,10 +358,11 @@ def activate_t_rex(sound, sound_length):
     """
 
     try:
-        T_REX_MOTOR.value = 0.6        # Controls the motor speed
+        T_REX_MOTOR.value = 0.7        # Controls the motor speed
     except ValueError:
-        logging.error("A bad value was specified for the T_REX_MOTOR." +
-                      "The value should be between 0 and 1.")
+        logger.error("A bad value was specified for the T_REX_MOTOR." +
+                     "The value should be between 0 and 1.",
+                     exc_info=True)
         print("\033[1;31;40mAn error was encountered. Check the log in the " +
               "'Files' folder for more information.\n")
         stop_the_program()
@@ -388,7 +394,7 @@ def stop_the_program():
 
     release_gpio_pins()
     print("\033[1;37;40mExiting program.\n")
-    logging.info("END")
+    logger.info("END")
     exit()
 
 
